@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <title>Menu</title>
+    <style></style>
+  </head>
+  <body>
+    <%- include('./partials/nav') %>
+    <h1>Menu List</h1>
+    <div class="container">
+      <% menu.forEach(menu => { %>
+      <div class="product-card">
+        <div class="product-name"><%= menu.name %></div>
+        <div class="product-price">$<%= menu.price %></div>
+        <div class="product-category">
+          <span>Category:</span><%= menu.category %>
+        </div>
+
+        <div class="attributes">
+          <strong>Additional:</strong>
+          <% menu.attributes.forEach(attr => { %>
+          <div><strong><%= attr.key %>:</strong> <%= attr.value %></div>
+          <% }) %>
+        </div>
+      </div>
+      <% }) %>
+    </div>
+  </body>
+</html>

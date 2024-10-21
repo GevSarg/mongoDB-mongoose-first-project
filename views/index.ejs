@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <title>House Listings</title>
+    <style></style>
+  </head>
+  <body>
+    <%- include('./partials/nav') %>
+    <h1>House Listings</h1>
+    <div class="container">
+      <% house.forEach(house => { %>
+      <div class="product-card">
+        <div class="product-name"><%= house.title %></div>
+        <div class="product-price">$<%= house.price.toLocaleString() %></div>
+        <div class="product-location">Location: <%= house.location %></div>
+        <div class="product-info">Bedrooms: <%= house.bedrooms %></div>
+        <div class="product-info">Bathrooms: <%= house.bathrooms %></div>
+        <div class="product-area">Area: <%= house.area %> sq ft</div>
+
+        <div class="attributes">
+          <strong>Amenities:</strong>
+          <% if (house.amenities.length > 0) { %>
+          <ul>
+            <% house.amenities.forEach(amenity => { %>
+            <li><%= amenity %></li>
+            <% }) %>
+          </ul>
+          <% } else { %>
+          <p>No additional amenities listed.</p>
+          <% } %>
+        </div>
+
+        <% if (house.images.length > 0) { %>
+        <div class="product-images">
+          <% house.images.forEach(image => { %>
+          <img
+            src="<%= image %>"
+            alt="<%= house.title %> image"
+            class="product-image"
+          />
+          <% }) %>
+        </div>
+        <% } %>
+
+        <div class="product-description">
+          <strong>Description:</strong>
+          <p><%= house.description %></p>
+        </div>
+      </div>
+      <% }) %>
+    </div>
+  </body>
+</html>

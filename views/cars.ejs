@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <title>Cars</title>
+    <style></style>
+  </head>
+  <body>
+    <%- include('./partials/nav') %>
+    <h1>Cars List</h1>
+    <div class="container">
+      <% cars.forEach(car => { %>
+      <div class="product-card">
+        <div class="product-name"><%= car.brand %> <%= car.model %></div>
+        <div class="product-price">$<%= car.price %></div>
+        <div class="product-country">
+          <strong>Country:</strong> <%= car.country %>
+        </div>
+        <div class="product-year"><strong>Year:</strong> <%= car.year %></div>
+        <div class="attributes">
+          <strong>Engine Specs:</strong>
+          <% car.engine.forEach(attr => { %>
+          <div><strong><%= attr.key %>:</strong> <%= attr.value %></div>
+          <% }) %>
+        </div>
+      </div>
+      <% }) %>
+    </div>
+  </body>
+</html>
